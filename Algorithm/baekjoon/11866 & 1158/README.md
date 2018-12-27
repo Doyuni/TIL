@@ -2,7 +2,7 @@
 
 ## C  
 
-'''c  
+'''c    
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -60,4 +60,4 @@ int main() {
     free(q);
     return 0;
 }
-'''  
+''' 
