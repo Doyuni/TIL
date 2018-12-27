@@ -1,6 +1,6 @@
 # 조세퍼스 문제  
  Using _Circular queue_
-## C  
+## C code
 
 ```c
 #include <stdio.h>
