@@ -1,6 +1,7 @@
-# 조세퍼스 문제
-C:  
-'''c
+# 조세퍼스 문제  
+
+## C  
+'''c  
 #include <stdio.h>
 #include <stdlib.h>
 
