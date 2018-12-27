@@ -2,7 +2,7 @@
 
 ## C  
 
-'''c    
+'''c 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,6 +12,7 @@ typedef struct Queue {
     int max;
     int *data;
 }CircularQ;
+'''
 
 CircularQ* Init(int size) {
     CircularQ *q;
@@ -60,4 +61,3 @@ int main() {
     free(q);
     return 0;
 }
-''' 
