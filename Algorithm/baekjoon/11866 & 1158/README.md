@@ -1,5 +1,5 @@
 # 조세퍼스 문제  
- _Circular queue_
+ Using _Circular queue_
 ## C  
 
 ```c
