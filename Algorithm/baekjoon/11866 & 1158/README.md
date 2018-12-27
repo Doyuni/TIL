@@ -1,6 +1,7 @@
 # 조세퍼스 문제  
 
 ## C  
+
 '''c  
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,4 +60,4 @@ int main() {
     free(q);
     return 0;
 }
-'''
+'''  
