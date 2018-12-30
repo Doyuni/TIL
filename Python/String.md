@@ -62,4 +62,4 @@ string.title() # 모든 단어의 첫 글자를 대문자로
 string.upper() # 모두 대문자로
 string.lower() # 모두 소문자로
 string.swapcase() # 대문자 > 소문자, 소문자 > 대문자
-string.center(300) # 300길이에서 중앙 정렬, ljust 왼쪽 정렬,  
+string.center(300) # 300길이에서 중앙 정렬, ljust 왼쪽 정렬,  rjust 오른쪽 정렬
