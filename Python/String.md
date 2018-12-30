@@ -45,3 +45,21 @@ string_join.replace('n', 'op', 2) # 2회까지 대체, 생략 시 모두 대체
 
 #### 3. 그외
 
+```python
+string = """Variable of static language can't be changed.
+            But Variable declaration is not required in dynamic language(script lang).
+            Interpreter instead of compiler translates the code.
+            Dynamic lang is slower than static lang.
+            """
+string.startswith('Var') # Var로 시작하는가? True
+string.endswith('static lang') # static lang으로 끝나는가? False
+string.find('static') # 첫 번째로 static이 나오는 offset >> 12
+string.rfind('static') # 마지막으로 static이 나오는 offset
+string.count('static') # static 횟수
+string.isalnum() # 글자와 숫자로만 이루어져 있는가?
+string.capitalize() # 첫 번째 단어 대문자로
+string.title() # 모든 단어의 첫 글자를 대문자로
+string.upper() # 모두 대문자로
+string.lower() # 모두 소문자로
+string.swapcase() # 대문자 > 소문자, 소문자 > 대문자
+string.center(300) # 300길이에서 중앙 정렬, ljust 왼쪽 정렬,  
