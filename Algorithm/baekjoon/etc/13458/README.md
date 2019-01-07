@@ -21,7 +21,7 @@ int main() {
 	for (auto i = v.begin(); i != v.end(); i++)
 	{
 		*i -= B;
-		if (*i > 0) { // 0보다 작으면 부감독관 필요없음
+		if (*i > 0) { // 0이하이면 부감독관 필요없음
 			if (*i % C != 0) sum += (*i / C) + 1;
 			else if (*i % C == 0) sum += (*i / C);
 		}
