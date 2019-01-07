@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 	int N, A, B, C;
-	long long sum = 0; // 감독관의 최소 수가 1,000,000,000,000이상이 될 수 있음.
+	long long sum = 0; // 감독관의 최소 수가 1,000,000,000,000가 될 수 있음 
 	vector<int> v;
 	cin >> N;
 	sum += N;
@@ -22,8 +22,8 @@ int main() {
 	{
 		*i -= B;
 		if (*i > 0) { // 0보다 작으면 부감독관 필요없음
-			if (*i != 0 && *i % C != 0) sum += (*i / C) + 1;
-			else if (*i != 0 && *i % C == 0) sum += (*i / C);
+			if (*i % C != 0) sum += (*i / C) + 1;
+			else if (*i % C == 0) sum += (*i / C);
 		}
 	}
 	cout << sum << endl;
