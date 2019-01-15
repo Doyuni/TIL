@@ -4,8 +4,6 @@ Using _bottom-up_
 ## C++
 ```c++
 #include <cstdio>
-#include <iostream>
-using namespace std;
 long long d[101][10];
 int main()
 {
