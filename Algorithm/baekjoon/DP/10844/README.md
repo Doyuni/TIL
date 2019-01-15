@@ -29,7 +29,7 @@ int main()
 	{
 		result += d[n][i];
 	}
-	printf("%0.lld\n", result%mod);
+	printf("%lld\n", result % mod);
 	return 0;
 }
 ```
