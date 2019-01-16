@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-// 지금 마시는(n) 포도주 잔이 연속으로 j(0~2)번째 마시는 잔이다.
 int d[10001][3]; 
 int glass[10001];
 int main()
@@ -11,7 +10,6 @@ int main()
 	for (int i = 1; i <= n; i++)
 	{
 		cin >> glass[i];
-		
 	}
 	for (int i = 1; i <= n; i++)
 	{
