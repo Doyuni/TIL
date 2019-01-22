@@ -20,3 +20,9 @@
     * Module name > Opencv  
  2) File > Project structure > app > Dependencies > + > Module dependency > Opencv(이전에 만든 opencv 모듈)
   ```
+3. javah
+ C/C++ 함수가 선언되어 있는 헤더 파일을 jni 디렉토리에 자동으로 생성해주는 역할
+  * File > Settings > Tools > External Tools > + 
+  ```
+  Name : javah
+  Description : 
