@@ -14,7 +14,7 @@ why? > Overloading in C++
  
  위의 method들을 예를 들면, int add -> addii처럼 만든다.
  
- ![mangle](https://en.wikipedia.org/wiki/Name_mangling#How_different_compilers_mangle_the_same_functions)
+ [example](https://en.wikipedia.org/wiki/Name_mangling#How_different_compilers_mangle_the_same_functions)
  
  C의 경우는 Overloading을 지원하지 않기에 mangled name이 필요없다. 하나의 binary에 function만 존재  
   (실제로 compiler는 이름을 바꿔 놓는다. -> object file(.o) or .lib 파일을 hex editor로 열어서 확인 가능)
