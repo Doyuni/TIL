@@ -24,5 +24,12 @@
  C/C++ 함수가 선언되어 있는 헤더 파일을 jni 디렉토리에 자동으로 생성해주는 역할
   * File > Settings > Tools > External Tools > + 
   ```
-  Name : javah
-  Description : 
+  Name: javah
+  Description: NDK Tool - javah
+  Program: Android Studio JDK > Android Studio가 설치된 폴더\jre\bin\javah.exe
+            Oracle JDK > Java\JDK가 설치된 폴더(jdk)\bin\javah.exe
+  Arguments: -v -jni -d $ModuleFileDir$/src/main/jni $FileClass$
+  Working directory: $SourcepathEntry$
+  ```
+4. MainActivity > 마우스 우클릭 > External Tools > javah
+ java code package 이름과 MainActivity의 조합으로 header 파일 이름 결정
