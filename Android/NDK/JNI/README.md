@@ -38,7 +38,7 @@
  #### main.cpp
  ```c++
  #include <jni.h>
- #include "방금 만들어진 헤더파일 이름"
+ #include "방금 만들어진 헤더파일 이름" // 사용하지 않는다면 포함시키지 않아도 된다.
  #include <opencv2/opencv.hpp>
 using namespace cv;
 
