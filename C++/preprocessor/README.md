@@ -1,6 +1,6 @@
 ## Preprocessor (전처리기)
 
-Type  
+_Type_  
 ### #define  
   macro라고 불리며, 값을 정의(치환)한다.
 ### #ifdef
@@ -10,7 +10,7 @@ Type
 ### #endif
   #define을 제외한 나머지는 #endif와 짝을 이루어야 한다.  
  
-Usage
+_Usage_
 ```c++
 // 정의되어 있지 않다면, 정의해준다.
 #ifndef __PREPROCESSOR_H__  // (1)
