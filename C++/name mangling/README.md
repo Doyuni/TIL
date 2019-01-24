@@ -3,8 +3,8 @@
   
 Compiler가 임의로 method or variable의 이름을 변경하는 것을 말한다.
 
-why? > Overloading in C++
-  * Overloading: same name, different function of method
+Because of **overloading** in C++
+  * **Overloading**: same name, different function of method
   ```c++
   int add(int a, int b) { return a+b; }
   double add(double a, double b) { return a+b; }
