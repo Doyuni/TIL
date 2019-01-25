@@ -20,7 +20,7 @@ Using _bottom-up_
 **d[n] = d[n-1] + d[n-5];**
 
 ## C++
-```
+```c++
 #include <iostream>
 using namespace std;
 long long d[101];
