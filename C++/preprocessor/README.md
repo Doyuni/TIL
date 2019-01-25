@@ -1,5 +1,5 @@
 ## Preprocessor (전처리기)
-  **#** : keyword that orders compiler
+  **#** : keyword that orders compiler  
 _Directive Type_  
 ### #include
  * 헤더파일을 추가한다. ( 헤더파일에 있는 함수들을 쓸 수 있도록)
@@ -64,7 +64,7 @@ int subtract(int a, int b);
 #include <iostream>
 #include <iostream>
 //iostream 헤더파일을 보면 선언된 상태이면 무시하게끔 지시문을 사용한다.
-ifndef _IOSTREAM_
+#ifndef _IOSTREAM_
 #define _IOSTREAM_
 ```
 ```c++
