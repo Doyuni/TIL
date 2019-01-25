@@ -6,7 +6,7 @@
   Python
   Javascript
   Deep Learning
-  RenderScript
+  Design Pattern
   OpenCV
   Algorithm
   ~~~
