@@ -1,14 +1,14 @@
-## OpenCV + Visual Studio 2017
+# OpenCV + Visual Studio 2017
 
-#### 1. System information
+## 1. System information
 ```
 OS: Windows 10 (64bit)
 Tool: Visual Studio 2017
 OpenCV v4.0.0
 ```
 
-#### 2. Environment setting  
-+ Windows 10  
+## 2. Environment setting  
+ ### Windows 10
 
 제어판 -> 시스템 -> 고급 시스템 설정 -> 고급 탭의 환경변수  
 
@@ -18,11 +18,11 @@ OpenCV v4.0.0
     + Variable : **opencv설치경로\build**
   + Path  
     + 편집 -> **%OPENCV_BUILD%\x64\vc15\bin**
-+ Visual Studio 2017  
-
-  Project 설정(Property)
-  
-   Configuration: All, Platform: x64  
+    
+### Visual Studio 2017   
+ Project 설정(Property)   
+   
+  Configuration: All, Platform: x64  
  
    + Configuration Properties
    
