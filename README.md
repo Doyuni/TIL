@@ -3,7 +3,7 @@
 ## Plan  
 
   [C++](C++/)  
-  Python  
+  [Python](Python/)  
   Javascript 
   Deep Learning  
   Design Pattern  
