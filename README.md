@@ -4,7 +4,7 @@
 
   [C++](C++/)  
   [Python](Python/)  
-  Javascript 
+  Javascript   
   Deep Learning  
   Design Pattern  
   [OpenCV](OpenCV/)  
