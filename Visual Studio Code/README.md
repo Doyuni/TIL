@@ -110,7 +110,7 @@
     ]
 }
 ```
-### 4. shortcut(단축키) 설정
+### 4. shortcut(단축키) 설정 및 extension 설치
   * Ctrl+k+s > keybindings.json 클릭
 #### keybindings.json
 ```javascript
@@ -124,6 +124,10 @@
 ]
 ```
   * 각 단축키를 누르면 컴파일, 실행을 수행한다.  
+  
+  * 다음의 extension(C/C++ ~ Code Runner까지) 설치한다.(For C/C++)  
+  
+  ![extension](extension.png)
   
 ### 5. Debugging 설정
   * 컴파일 후 F5를 누르면 launch.json 파일이 열린다.
