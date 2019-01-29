@@ -46,14 +46,14 @@ OpenCV v4.0.1
 ```
 
 ## 2. Environment setting   
-### OpenCV 설치
- 1). 기존 패키지들 업데이트 및 업그레이드
+
+### 1). 기존 패키지들 업데이트 및 업그레이드
 ```console
 Doyuni@groot:~$ sudo apt-get update
 Doyuni@groot:~$ sudo apt-get upgrade
 
 ```
-2). cmake 및 패키지 설치
+### 2). cmake 및 패키지 설치
  * build-essential package: include C/C++ compiler, library and make
  * cmake: for compiling openCV
 ```console
@@ -76,7 +76,7 @@ Doyuni@groot:~$ sudo apt-get install libqt4-dev
 Doyuni@groot:~$ sudo apt-get install mesa-utils libgl1-mesa-dri libqt4-opengl-dev
 Doyuni@groot:~$ sudo apt-get install libatlas-base-dev gfortran libeigen3-dev
 ```
-3). OpenCV 설정 및 설치
+### 3). OpenCV 설치 및 설정
  * OpenCV 설치할 디렉토리 생성 및 설치
 ```console
 Doyuni@groot:~$ mkdir OpenCV
@@ -123,6 +123,20 @@ Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ cat /proc/cpuinfo | grep processor | w
 Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ time make -j8
 Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ sudo make install
 ```
+* /etc/ld.so.conf.d/ 디렉토리에 /usr/local/lib 설정파일이 있는지 확인한다.
+```console
+Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ cat /etc/ld.so.conf.d/*
+/usr/lib/x86_64-linux-gnu/libfakeroot
+# libc default configuration
+/usr/local/lib
+# Multiarch support
+/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu
+/usr/lib/x86_64-linux-gnu/mesa-egl
+/usr/lib/x86_64-linux-gnu/mesa
+```
+
+### 4) OpenCV code Test
  Visual Studio Code  
  [설정 참고](https://github.com/Doyuni/TIL/tree/master/Visual%20Studio%20Code)
  
@@ -161,6 +175,7 @@ file(GLOB SOURCES  *.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES}  )
 target_link_libraries( 코드가 있는 디렉토리 이름 ${OpenCV_LIBS} )
 ```
+* task 
 #### tasks.json
 ```javascript
 {
