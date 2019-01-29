@@ -175,7 +175,7 @@ file(GLOB SOURCES  *.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES}  )
 target_link_libraries( 코드가 있는 디렉토리 이름 ${OpenCV_LIBS} )
 ```
-* task 
+* task 파일 설정
 #### tasks.json
 ```javascript
 {
