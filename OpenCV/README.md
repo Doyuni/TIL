@@ -1,4 +1,5 @@
-# OpenCV + Visual Studio 2017
+# OpenCV + Visual Studio 2017 & Visual Studio Code
+ * Visual Studio Code for Ubuntu
 
 ## 1. System information
 ```
@@ -34,5 +35,20 @@ OpenCV v4.0.0
    
      + General -> Additional Library Directories: **$(OPENCV_BUILD)\x64\vc15\lib**  
      + Input -> Additional Dependencies: **opencv_world401.lib;opencv_world401d.lib**  
-     
+     Windows 10 (64bit) or
          * Debug: opencv_world400d.lib / Release: opencv_world400.lib
+         
+## 1. System information
+```
+OS: Ubuntu 16.04
+Tool: Visual Studio Code
+OpenCV v4.0.1
+```
+
+## 2. Environment setting   
+### OpenCV 설치
+```console
+Doyuni@groot:~$ sudo apt-get update
+Doyuni@groot:~$ 
+
+```
