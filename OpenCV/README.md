@@ -123,8 +123,88 @@ Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ cat /proc/cpuinfo | grep processor | w
 Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ time make -j8
 Doyuni@groot:~/OpenCV/opencv-4.0.1/build$ sudo make install
 ```
- Visual Studio Code
- [설정 보기](https://github.com/Doyuni/TIL/Visual%20Studio%20Code)
+ Visual Studio Code  
+ [설정 참고](https://github.com/Doyuni/TIL/tree/master/Visual%20Studio%20Code)
  
+ #### main.cpp
+ ```c++
+ #include "opencv2/opencv.hpp"
+#include <iostream>
+#include <string>
+using namespace std;
+using namespace cv;
+int main()
+{
+    string filepath("Lena.jpg"); // load the image
+    Mat origin_img = imread(filepath, IMREAD_COLOR);
+    if (origin_img.empty())
+    {
+        cout << "이미지를 찾을 수 없습니다." << endl;
+        return -1;
+    }
+    imshow("Lena", origin_img);
+    waitKey();
+    return 0;
+}
+ ```
+ * main.cpp 있는 디렉토리에 CMakeLists.txt 파일 생성
+ #### CMakeLists.txt
+ ```txt
+ project(코드가 있는 디렉토리 이름)
 
+set (CMAKE_CXX_STANDARD 11)
+cmake_minimum_required(VERSION 2.8)
+find_package( OpenCV REQUIRED )
+ 
+file(GLOB SOURCES  *.cpp)
+ 
+add_executable(${PROJECT_NAME} ${SOURCES}  )
+target_link_libraries( 코드가 있는 디렉토리 이름 ${OpenCV_LIBS} )
 ```
+#### tasks.json
+```javascript
+{
+    "version": "2.0.0",
+    "runner": "terminal",
+    "type": "shell",
+    "echoCommand": true,
+    "presentation" : { "reveal": "always" },
+    "tasks": [
+          //C++ 컴파일
+          {
+            "label": "compile for C++",
+            "command": "cd ${fileDirname} && cmake . && make",
+            "group": "build",
+
+            //컴파일시 에러를 편집기에 반영
+            //참고:   https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
+
+            "problemMatcher": {
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    // The regular expression. 
+                   //Example to match: helloWorld.c:5:3: warning: implicit declaration of function 'prinft'
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        // 바이너리 실행(Ubuntu)
+        {
+            "label": "execute",
+
+            "command": "cd ${fileDirname} && ./${workspaceFolderBasename} ",
+
+            "group": "test"
+        }
+    ]
+}
+```
+* 위의 예제 코드를 compile 하고 execute하면 윈도우 창에 Lena 사진이 보여진다.
