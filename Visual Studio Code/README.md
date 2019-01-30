@@ -182,7 +182,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
+            "miDebuggerPath": "C:/Program Files/mingw-w64/bin/gdb.exe", // 자신의 Mingw가 설치된 경로의 bin/gdb.exe로 설정한다.
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
