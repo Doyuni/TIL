@@ -39,3 +39,27 @@ int main()
 // double          is 8bytes.
 // long double     is 16bytes.
 ```
+
+#### 각 type별 범위의 한도 알기
+
+```c++
+#include <limits>
+
+std::numeric_limits<int>::max(); // 최대 범위값
+std::numeric_limits<int>::min(); // 절댓값일 때 가장 작은 수
+std::numeric_limits<int>::lowest(); // 최소 범위값
+
+int i = 2147483647;
+i += 1; // overflow
+i = -2147483648;
+i -= 1; // overflow
+```
+
+#### c++11 fixed width integer types
+```
+#include <cstdint>
+int8_t ic = 65; // 1bytes, same as signed char type
+int16_t i_16(5); // 2bytes
+int_fast8_t // 1bytes, fastest signed char
+int_least64_t // 8bytes, least long long
+```
