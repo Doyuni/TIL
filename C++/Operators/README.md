@@ -47,7 +47,7 @@ int y = -x;   // 단항 연산자는 헷갈리지 않게 붙여쓰는게 좋다.
 -5 % 2 = -1  왼쪽의 부호에 따라 부호가 결정된다.
 ```c++
 y = -5 /  2;  // -2
-y =  5 % -2;  // 1
+y =  5 % -2;  //  1
 y = -5 % -2;  // -1
 ```
 
@@ -110,8 +110,8 @@ cout << ((x % 2 == 0) ? "even" : "odd") << endl;
 ```
 
 ### Relational operators
+* >=, >>, <=, <<, ==, !=
 ```c++
-// >=, >>, <=, <<, ==, !=
 double d1(100 - 99.99);
 double d2(10 - 9.99);
 
@@ -143,5 +143,11 @@ else
 }
 // Print "Approximately equal"
 ```
+
+### Logical operators
+* logical NOT : !
+* logical AND : &&
+* logical  OR : ||
+
 * 대입 연산자
 int z = x; // x변수가 가리키고 있는 메모리의 정보를 z변수가 가리키고 있는 메모리에 복사해서 넣어라.
