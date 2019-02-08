@@ -14,7 +14,7 @@ cout << (a+b) * c + d << endl;
 ```
 * -2가 되어야 하는데 4294967294라는 값이 출력됨
 ```
-(a+b)에서 -1 (int)
+(a+b)  에서 -1 (int)
 -1 * c 에서 -2 (int)
 -2 + d 에서 unsigned int
 => 2^32 - 2 = 4294967294
@@ -43,7 +43,7 @@ int y = -x;   // 단항 연산자는 헷갈리지 않게 붙여쓰는게 좋다.
 ```
 
 #### 음의 정수를 나누는 경우 (C++11 이후)
--5 / 2 = -2.5가 아닌 버림을 하여 -2
+-5 / 2 = -2.5가 아닌 버림을 하여 -2  
 -5 % 2 = -1  왼쪽의 부호에 따라 부호가 결정된다.
 ```c++
 y = -5 /  2;  // -2
@@ -58,14 +58,14 @@ y = -5 % -2;  // -1
 // add는 인자 두 값을 더한 값을 반환하는 함수
 
 int v = add(x, ++x); // do not use
-cout << v << endl;   // 컴파일러에 따라 다른 값이 출력
+cout << v << endl;   // depending on compiler
 
-v = add(x, ++y);     // 영향을 주지 않으니 상관없다.
+v = add(x, ++y);     // 영향을 주지 않으니 .
 cout << v << endl;
 ```
 
 ### Sizeof operator
-* sizeof는 operator라는 것을 표준에서 정해놓았고, operator이기에 ()가 필요 없다.
+* sizeof가 operator라는 것을 표준에서 정해놓았고, operator이기에 ()가 필요 없다.
 ```c++
 float f;
 // type or variable 모두 가능
@@ -110,7 +110,7 @@ cout << ((x % 2 == 0) ? "even" : "odd") << endl;
 ```
 
 ### Relational operators
-* >=, >>, <=, <<, ==, !=
+ **>=, >>, <=, <<, ==, !=**
 ```c++
 double d1(100 - 99.99);
 double d2(10 - 9.99);
@@ -148,6 +148,172 @@ else
 * logical NOT : !
 * logical AND : &&
 * logical  OR : ||
+```c++
+//short circuit evaluation
+int lx = 2;
+int ly = 2;
+if (lx == 1 && ly++ == 2)
+{
+    // ly++ == 2를 판단하지 않는다.
+}
+cout << ly << endl;   // 2
 
-* 대입 연산자
-int z = x; // x변수가 가리키고 있는 메모리의 정보를 z변수가 가리키고 있는 메모리에 복사해서 넣어라.
+// De Morgan's Law
+!(x || y);  // same as !x && !y
+
+bool bx = true;
+bool by = false;
+// XOR (if two values differ, return true otherwise return false)
+cout << (bx != by) << endl;
+```
+
+### Binary numbers 
+* 2로 나눈 나머지로 구하는 방법 외에 다른 방법으로 구하기.
+ 
+* 10진수 양의 정수 148을 2진수로 변환
+```
+1 2 4 8 16 32 64 128 256
+
+    148 >= 128              Yes -> 8번째 자리 1
+    148-128=20, 20 >= 64    No  -> 7번째 자리 0
+                20 >= 32    No  -> 6번째 자리 0
+                20 >= 16    Yes -> 5번째 자리 1
+    20-16=4,    4 >= 8      No  -> 4번째 자리 0
+                4 >= 4      Yes -> 3번째 자리 1
+    4-4=0
+   => 1001 0100
+```
+  * 10진수 음의 정수 -5를 2진수로 변환
+```
+음의 정수 2진수 표현
+    -5 (decimal)
+  1. 숫자만 이진수로 바꾼다.
+    0000 0101
+  2. 보수 complement
+    1111 1010
+  3. 1을 더한다.
+    1111 1011 
+   * 왜 1을 더하는가 ?
+    맨 앞의 1비트는 부호비트로 0이면 양수, 1이면 음수이다.
+    0이 2가지 형태가 되는 것을 막기위해 1을 더한다.
+    양의 정수에서 0
+    0000 0000
+    음의 정수에서 0
+    1111 1111
+    여기에 1을 더해야 같은 형태가 된다.
+```
+* 2진수 1001 1110을 10진수로 변환
+  * 맨 앞의 비트는 부호 비트(1이면 음수, 0이면 양수)
+```
+  1. 보수를 취한다.
+    0110 0001
+  2. 1을 더한다.
+    0110 0010 -> 98
+  3. 부호를 붙인다.
+    -98 
+```
+### Bitwise operators
+**<<(left shift), >>(right shift)**  
+ _Why need these ?_  
+ * bool type을 예로 들면, bool은 0, 1만 저장하는데 메모리는 byte 단위 즉, 주소를 셀 수 있는 단위는 최소 8bits이다.
+   2^8 중 2개만 사용하기에 메모리를 낭비하게 된다.  
+   이런 메모리를 아끼고 전부 의미있게 사용하기 위해 비트 단위 연산자가 이용된다.    
+   또한, 비트 단위 연산자를 이용하면 계산속도가 빠르다.    
+    * 1024 / 8 보다 shift 연산이 더 빠르다.
+    컴퓨터 내부의 data가 저장된 방식으로 밀기 때문이다.
+```c++
+#include <bitset>
+unsigned int bit_a = 3;
+//어떻게 저장되는지 내부적으로 보여준다.
+cout << std::bitset<4>(bit_a) << endl; // 0011
+
+unsigned int bit_b = bit_a << 1;              // 3 * 2^1 (left shift one time)
+cout << std::bitset<4>(bit_b) << endl;        // 0110, 6
+cout << std::bitset<8>(bit_b << 2) << endl;   // 00011000, 6 * 2^2
+cout << std::bitset<8>(bit_b << 3) << endl;   // 00110000, 6 * 2^3
+cout << std::bitset<32>(bit_b << 29) << endl; // 11000000000000000000000000000000, 6 * 2^29
+// int형이기에 32이상 쓸 수 없음 << 30으로 shift하면 맨 앞의 1은 잘려나간다.
+cout << std::bitset<4>(bit_b >> 2) << endl;   // 0011, 6 / 2^1 = 3
+cout << std::bitset<4>(bit_b >> 3) << endl;   // 0001, 6 / 2^2 = 1
+```
+* bitwise not: **~**
+```c++
+#include <bitset>
+// 0b (binary number)
+unsigned int bi_a = 0b1100;
+unsigned int bi_b = 0b0101;
+cout << bitset<4>(~bi_a) << endl;       // bitwise NOT  0011
+cout << bitset<4>(bi_a & bi_b) << endl; // bitwise AND  0100
+cout << bitset<4>(bi_a | bi_b) << endl; // bitwise  OR  1101
+cout << bitset<4>(bi_a ^ bi_b) << endl; // bitwise XOR  1001
+```
+* **bit flag, bit mask**
+1. 예제) 특정 아이템
+```c++
+#include <bitset>
+const unsigned char opt0 = 1 << 0;
+const unsigned char opt1 = 1 << 1;
+const unsigned char opt2 = 1 << 2;
+const unsigned char opt3 = 1 << 3;
+// ... opt4 , 5, 6, 7
+
+unsigned char items_flag = 0;
+// item 8개의 소지 여부를 확인 가능 (1bytes만으로)
+cout << "No item " << bitset<8>(items_flag) << endl;
+
+// get item0
+items_flag |= opt0;
+cout << "Item0 obtained " << bitset<8>(items_flag) << endl; // 00000001
+
+// get item3
+items_flag |= opt3;
+cout << "Item3 obtained " << bitset<8>(items_flag) << endl;
+
+// lost item3
+items_flag &= ~opt3;
+cout << "Item3 lost " << bitset<8>(items_flag) << endl;
+
+// has item1 ?
+if (items_flag & opt1)
+    cout << "Has item1" << endl;
+
+// has item0 ?
+if (items_flag & opt0)
+    cout << "Has item0" << endl;
+
+// obtain item2 & item3
+items_flag |= (opt2 | opt3);
+cout << "Item2 & item3 obtained " << bitset<8>(items_flag) << endl;
+// item이 많으면 for문으로 해결
+// 상태를 바꿔주는 XOR
+//  item2 on -> off, item1 off -> on
+if ((items_flag & opt2) && !(items_flag & opt1))
+{
+    items_flag ^= (opt2 | opt1);
+}
+cout << "swap item2 & item3  " << bitset<8>(items_flag) << endl;
+```
+2. 예제) RGB pixel
+* RGB + α : FF FF FF α => 4bytes(same as size of integer type)
+  * Red color pixel: 00000000 11111111 00000000 00000000  (255, 0, 0)
+```c++
+const unsigned int red_mask   = 0xFF0000;
+const unsigned int green_mask = 0x00FF00;
+const unsigned int blue_mask  = 0x0000FF;
+
+unsigned int pixel_color = 0xDAA520;
+
+cout << bitset<32>(pixel_color) << endl;
+// mask를 이용해 색깔 추출
+
+unsigned char blue = pixel_color & blue_mask;   // 최대 bitset 8까지만 가능
+unsigned int green = pixel_color & green_mask;  // 최대 bitset 32까지만 가능
+cout << "blue " << bitset<8>(blue) << " " << int(blue) << endl;
+cout << "green " << bitset<16>(green) << " " << int(green) << endl; // 42240이 출력된다.(shift 필요)
+green >>= 8;
+cout << "green " << bitset<8>(green) << " " << int(green) << endl;  // 165
+unsigned int red = (pixel_color & red_mask) >> 16;
+cout << "red " << bitset<8>(red) << " " << int(red) << endl;        // 218
+```
+3. 예제) bit_mask_quiz.cpp 참고
+
