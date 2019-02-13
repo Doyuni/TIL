@@ -32,7 +32,7 @@ enum Sword
     WEAPON_MIDDLE_SWORD, // -1이다.
 }; // ; 주의 !!
 
-int __main() {
+int main() {
     using namespace std;
 
     Weapon sword = WEAPON_SWORD;
