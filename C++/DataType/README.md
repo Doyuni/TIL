@@ -281,3 +281,6 @@ string sum = hello + world // Hello world !
 // Hello world !(총 13글자)
 cout << sum.length() << endl; // 13
 ```
+
+### enum
+링크
