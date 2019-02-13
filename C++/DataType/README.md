@@ -186,3 +186,98 @@ namespace constants
     //...
 }
 ```
+### Type conversion
+#### typeid
+
+* 현재 사용하고 있는 변수나 리터럴 상수의 타입이 궁금할 때 사용한다.
+```c++
+#include <typeinfo>
+cout << typeid(a).name() << endl;
+cout << typeid(4.1).name() << endl;
+```
+#### Implicit type conversion (coercion)
+* compiler가 알아서 형변환을 해준다.
+단, type의 수용 가능 범위가 넘어가는 수를 담아 형변환 할 때는 이상한 값을 갖는다.
+```c++
+#include <iomanip>
+// numeric conversion
+int a = 123.0;
+float f = 1.0f;
+double d = f;   // promotion
+
+int i = 10000;
+char c = i; // 최대 수용 가능한 수 127
+
+d = 0.123456789;
+f = d; // 정밀도 하락 double -> float
+cout << setprecision(12) << f << endl; // 0.123456791043
+
+f = 3.14;
+i = f; // 정밀도 하락 float -> int
+cout << setprecision(12) << i << endl; // 3 ( 소수점 아래 버려짐)
+```
+* **unsigned int** 와 **int**를 함께 쓸 경우 주의한다.  
+    형변환에도 우선순위가 있기 때문이다.  
+    * 정수형인데 int type보다 작은 경우, int type으로 자동 변환한다.  
+    * 그외 unsigned의 우선순위가 더 높음을 알 수 있다.  
+    long double > double > float > unsigned long long > long long > unsigned long > long > unsigned int > int  
+```c++
+cout << 5u - 10 << endl; // 4294967291 (2^32 - 5)
+```
+#### Explicit type conversion (casting)
+```c++
+c style
+int i = (int)4.0;
+
+c++ style
+// integer type의 instance를 새로 만들어서 i에 넣는다.
+int i = int(4.0); 
+
+int i = static_cast<int>(4.0);
+```
+
+### string
+* 사용자 정의 자료형
+* 기존 cin으로 입력받으면 공백까지만 입력을 받는다.  
+긴 문자열 입력에는 getline을 사용한다.
+```c++
+#include <string>
+const string my_hi = "Hi";
+const string my_st = "String";
+const string my("My");
+
+string name;
+std::getline(std::cin, name);
+```
+* 하지만 geline은 공백을 입력받을 수 있기에 다음과 같은 문제가 생긴다.
+```c++
+int age;
+cin >> age;
+getline(cin, name); 
+cout << name << endl; // 사용자가 원하는 입력 문자열이 출력되지 않는다.
+```
+* age를 입력 후 엔터를 치거나 age name을 공백을 두고 입력을 하게되면 getline은 공백을 포함하여 buffer에 넣어두기에  
+개행문자 or 앞에 공백이 포함된 문자열이 출력된다.  
+```c++
+int age;
+cin >> age;
+std:cin.ignore(32767, '\n'); // '\n'을 만날 때 까지 최대 32767개의 문자를 무시한다.
+getline(cin, name); 
+cout << name << endl; 
+```
+* 32767이 아닌 magic number를 사용하여 표현할 수 있다.
+```c++
+#include <limits>
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+```
+#### append
+```c++
+string hello = "Hello ";
+string world = "world !";
+string sum = hello + world // Hello world !
+```
+#### length
+```c++
+// Hello world !(총 13글자)
+cout << sum.length() << endl; // 13
+```
