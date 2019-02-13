@@ -173,4 +173,73 @@ namespace constants
 ![output2](./output2.png)  
 * 메모리 주소가 같으므로, 메모리 낭비를 해결하였음을 알 수 있다.
 
-### using / auto
+### using
+* namespace에만 using을 사용할 수 있다.
+* header파일에 namespace를 큰 영역(전역 변수처럼)으로 사용하면 위험하다.
+이 header파일을 포함하는 cpp 파일 전체가 namespace의 영향을 받기 때문이다.
+그래서 작은 블럭 단위로 사용해야 안전성을 높일 수 있다.
+```c++
+namespace a {
+    int my_var(10);
+    int my_a(1);
+    int count(123);
+}
+namespace b {
+    int my_var(20);
+    int my_b(2);
+}
+int main() {
+    
+    // cout, endl은 namespace가 아니다.
+    using std::cout; 
+    using std::endl;
+    cout << "using" << endl;
+
+    using namespace a;
+    using namespace b;
+    // 이름이 같다면 error 발생
+    cout << my_var << endl; // ambiguous 
+    // 이름이 다르면 상관없다.
+    cout << my_a << endl;
+    cout << my_b << endl;
+
+    using namespace std;
+    {
+        using namespace a;
+        cout << my_var << endl;
+        // std 에 count가 있으므로 a::count라 써야한다.
+        cout << count << endl; 
+    }
+    {
+        using namespace b;
+        cout << my_var << endl;
+    }
+    ...
+}
+```
+
+### auto
+* 함수의 return type으로 auto를 사용할 수 있다.
+하지만, 함수의 parameter type에는 auto를 사용할 수 없다.
+=> 이는 parameter type을 자동으로 추론해달라는 auto를 사용하는 의도와 달리,  
+다양한 경우에 대해서 함수가 만들고자 하는 의도이기에 이는 template를 사용해야 한다.
+```c++
+auto sum(double a, double b) {
+    return a+b;
+}
+// trailing return type을 쓰면 어떤 타입을 반환하는지에 대한 가독성이 좋다.
+auto sum(float a, float b) -> double {
+    return a+b;
+}
+auto sum(int a, int b) -> int {
+    return a+b;
+}
+int main() {
+// 초기화를 해줘야 컴파일이 무슨 type인지 알 수 있다.
+    auto a = 1;
+    auto b = 1.0;
+    auto c = 1 + 2.0;
+    auto result = sum(1, 2); 
+    ...
+}
+```
