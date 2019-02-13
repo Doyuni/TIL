@@ -77,7 +77,8 @@ int main() {
 ### extern
 * 몸체는 어딘가에 있기에 compile에선 넘어간다. linking할 때 몸체가 어딨는지 확인한다.  
 단, 몸체에서 초기화를 해주지 않으면 메모리를 갖고 있지 않게 되므로 에러가 난다.  
-또한, 초기화를 두 번 이상 해주면 에러가 난다.  
+또한, 초기화를 두 번 이상 해주면 에러가 난다.    
+
 extern.cpp
 ```c++
 #include <iostream>
@@ -106,7 +107,8 @@ int main() {
   ...
 }
 ```
-* 메모리 낭비를 막기 위해 extern을 사용한다.
+* 메모리 낭비를 막기 위해 extern을 사용한다.  
+
 constant.cpp
 ```c++
 #include <iostream>
@@ -146,6 +148,7 @@ void doSomething() {
 * 둘의 메모리 주소가 다름을 알 수 있다.  
 => 헤더파일에 extern const로만 변수를 선언해준다.
 초기화를 하면 다른 cpp파일에서 헤더파일을 include(포함)할 때마다 초기화를 해주기에 multiple define error가 발생한다."  
+
 MY_CONSTANTS.h
 ```c++
 namespace constants
