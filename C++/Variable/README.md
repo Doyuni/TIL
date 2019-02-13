@@ -145,9 +145,10 @@ void doSomething() {
     // -> my_constatant.cpp에 extern const pi(3.141592);
 }
 ```
+![output1](./output1.png)  
 * 둘의 메모리 주소가 다름을 알 수 있다.  
-=> 헤더파일에 extern const로만 변수를 선언해준다.
-초기화를 하면 다른 cpp파일에서 헤더파일을 include(포함)할 때마다 초기화를 해주기에 multiple define error가 발생한다."  
+=> 헤더파일에 extern const로만 변수를 선언해준다.  
+초기화를 하면 다른 cpp파일에서 헤더파일을 포함할 때마다 초기화를 해주기에 multiple define error가 발생한다.
 
 MY_CONSTANTS.h
 ```c++
@@ -169,6 +170,7 @@ namespace constants
     //...
 }
 ```
+![output2](./output2.png)  
 * 메모리 주소가 같으므로, 메모리 낭비를 해결하였음을 알 수 있다.
 
 ### using / auto
