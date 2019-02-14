@@ -283,4 +283,7 @@ cout << sum.length() << endl; // 13
 ```
 
 ### enum
-링크
+[enum](enum/)
+
+### struct
+[struct](struct/)
