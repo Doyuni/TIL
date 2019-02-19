@@ -184,3 +184,114 @@ public class GetFruitMenu {
  * 단점  
    * 코드가 길어질 수 있다.
 
+###  GoF의 디자인 패턴 중 Builder Pattern
+* 객체를 생성하는 방법과 객체를 표현하는 방법을 분리한다.
+* 참여자  
+    * Builder : 객체의 일부 요소들을 생성하기 위한 추상 인터페이스
+    * ConcreteBuilder : Builder 인터페이스를 구현
+    * Director : Builder 인터페이스를 사용하는 객체를 생성
+    * Product : 생성할 객체 표현  
+#### Builder
+```c++
+class MazeBuilder {
+public:
+    virtual void BuildMaze() {}
+    virtual void BuildRoom(int room) {}
+    virtual void BuildDoor(int roomFrom, int roomTo) {}
+    // 완성된 복합 객체 미로를 얻는다.
+    virtual Maze* GetMaze() { return 0; }
+protected:
+    // 미로를 실제로 만드는 연산
+    MazeBuilder();
+};
+```
+* Builder 인터페이스를 통해 미로와 방 번호를 갖는 방과 방들 사이의 문을 생성할 수 있다.
+* 미로 자체가 아닌 미로를 생성하는 인터페이스를 정의한 것으로 실제 요소를 만드는 것은 ConcreteBuilder이다.
+#### ConcreteBuilder
+```c++
+//
+class StandardMazeBuilder : public MazeBuilder {
+    public :
+        StandardMazeBuilder();
+        virtual void BuildMaze();
+        virtual void BuildRoom(int);
+        virtual void BuildDoor(int, int);
+
+        Virtual Maze* GetMaze();
+    private :
+        // 두 방 사이에 있는 벽의 방향을 결정
+        Direction CommonWall(Room*, Room*);
+        Maze* _currentMaze; // 이 변수를 통해 자신이 구축한 미로 관리
+};
+// 초기화
+StandardMazeBuilder::StandardMazeBuilder() {
+    _currentMaze = 0;
+}
+// Maze의 인스턴스 생성
+void StandardMazeBuilder::BuildMaze() {
+    _currentMaze = new Maze;
+}
+// TODO: 사용자가 원하는 미로를 만들기 위한 연산 수행
+void StandardMazeBuilder::BuildRoom(int n) {
+    if(!_currentMaze->RoomNo(n)) {
+        Room* room = new Room(n);       // 방 생성
+        _currentMaze->AddRoom(room);    // 미로에 방 추가
+        
+        room->SetSize(North, new Wall);
+        room->SetSize(South, new Wall);
+        room->SetSize(East, new Wall);
+        room->SetSize(West, new Wall);
+    }
+}
+void StandardMazeBuilder::BuildDoor(int n1, int n2) {
+    Room* r1 = _currentMaze->RoomNo(n1);
+    Room* r2 = _currentMaze->RoomNo(n2);
+    Door* d = new Door(r1, r2);
+    
+    r1->SetSize(CommonWall(r1, r2), d);
+    r2->SetSize(CommonWall(r2, r1), d);
+}
+// 사용자에게 반환
+Maze* StandardMazeBuilder::GetMaze() {
+    return _currentMaze;
+}
+```
+```c++
+class CountingMazeBuilder : public MazeBuilder {
+    public :
+        CountingMazeBuilder();
+        virtual void BuildMaze();
+        virtual void BuildRoom(int);
+        virtual void BuildDoor(int, int);
+        virtual void AddWall(int, Direction);
+        void GetCount(int &, int &) const;
+    private :
+        int _doors;
+        int _rooms;
+}
+
+```
+
+#### Director
+
+```c++
+Maze* MazeGame::CreateMaze(MazeBuilder& builder) {
+    builder.BuildMaze();
+    builder.BuildRoom(1);
+    builder.BuildRoom(2);
+    builder.BuildDoor(1, 2)
+    
+    return builder.GetMaze();
+}
+```
+* CreateMaze()를 보면 Builder 객체가 어떻게 생성되는지 캡슐화되어 있음을 알 수 있다. 
+
+#### Usage
+```c++
+Maze* maze;
+MazeGame game;
+StandardMazeBuilder builder;
+
+game.CreateMaze(builder);
+maze = builder.GetMaze();
+```
