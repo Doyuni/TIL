@@ -2,7 +2,7 @@
 * 하나의 객체를 생성할 때 객체를 이루는 구성요소들을 분리하여 각각 별도의 클래스들을 만들고 이 클래스들을 조합하여 하나의 객체를 만드는 패턴이다. 
 
 ## Why use this ?
-* java를 예로 들면, 객체를 생성할 때 생성자의 인자가 객체마다 필요한 인자가 각각 다르고 혹은 필요한 인자가 많을 수도 있다.  
+* java를 예로 들면, 객체를 생성할 때 생성자의 인자가 객체마다 필요한 인자가 각각 다르고 그 수가 많을 수도 있다.  
 이럴 경우 Builder pattern을 적용하여 객체 생성을 깔끔하고 유연하게 할 수 있다.
 
 ### Telescoping Constructor Pattern ( 점층적 생성자 패턴 )
@@ -209,7 +209,6 @@ protected:
 * 미로 자체가 아닌 미로를 생성하는 인터페이스를 정의한 것으로 실제 요소를 만드는 것은 ConcreteBuilder이다.
 #### ConcreteBuilder
 ```c++
-//
 class StandardMazeBuilder : public MazeBuilder {
     public :
         StandardMazeBuilder();
@@ -223,6 +222,8 @@ class StandardMazeBuilder : public MazeBuilder {
         Direction CommonWall(Room*, Room*);
         Maze* _currentMaze; // 이 변수를 통해 자신이 구축한 미로 관리
 };
+
+// TODO: 사용자가 원하는 미로를 만들기 위한 연산 수행
 // 초기화
 StandardMazeBuilder::StandardMazeBuilder() {
     _currentMaze = 0;
@@ -231,7 +232,6 @@ StandardMazeBuilder::StandardMazeBuilder() {
 void StandardMazeBuilder::BuildMaze() {
     _currentMaze = new Maze;
 }
-// TODO: 사용자가 원하는 미로를 만들기 위한 연산 수행
 void StandardMazeBuilder::BuildRoom(int n) {
     if(!_currentMaze->RoomNo(n)) {
         Room* room = new Room(n);       // 방 생성
@@ -257,6 +257,7 @@ Maze* StandardMazeBuilder::GetMaze() {
 }
 ```
 ```c++
+// 다른 종류의 Maze 만들기
 class CountingMazeBuilder : public MazeBuilder {
     public :
         CountingMazeBuilder();
@@ -269,7 +270,6 @@ class CountingMazeBuilder : public MazeBuilder {
         int _doors;
         int _rooms;
 }
-
 ```
 
 #### Director
