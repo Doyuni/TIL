@@ -1,4 +1,18 @@
-* CUDA
+### CUDA 설치
+* 설치
+```
+OS  : Windows 10
+Tool: Visual Studio 2015  
+      CUDA 8.0
+```
+* 설치 순서: Visual Studio 2015 -> CUDA (Visual 버전에 맞게 설치되기 때문)
+* 환경 변수 (자동으로 등록되어 확인만 해준다.)  
+제어판 -> 시스템 -> 고급 시스템 설정 -> 환경 변수 -> 시스템 변수 CUDA_PATH 설정 확인
+
+* Visual Studio 설정  
+1. 프로젝트 생성 -> 템플릿 부분에 NVIDIA CUDA 8.0 선택하여 프로젝트 생성
+2. kernel.cu 파일 확인 후 예제 실행 -> 출력 확인
+3. 출력값이 확인되면 .cu 파일에 코드 작성
 
 * OpenCL
   Open Computing Language는 다양한 플랫폼을 통해 실행되는 프로그램을 위한 프레임워크로 CPU, GPU, DSP 그리고 FPGA를 구성한다.
