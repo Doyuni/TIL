@@ -14,6 +14,8 @@
  * 둘 다 built-in variable이다.
  * blockIdx를 통해 각 블럭에 접근이 가능하다.
  * blockDim을 통해 커널 내에서 스레드 블럭의 차원에 접근이 가능하다.
+ 
+ #### GPU에서의 행렬 Add 연산 예제
  ```c++ 
  // Kernel definition (device)
 __global__ void MatAdd(float A[N][N], float B[N][N],
@@ -41,3 +43,51 @@ int main()
 }
 ```
  
+#### GPU에서의 Add 연산 예제
+```c++
+#include <iostream>
+#include <cuda_runtime.h>
+
+using namespace std;
+
+// device(GPU)에서 실행, host(CPU)에서 호출
+__global__ void sum(int *a, int *b, int* c) {
+	*c = *a + *b;
+}
+
+int main() {
+	int a, b, c; // variables to use in host
+	int *d_a, *d_b, *d_c; // variables to use in device
+	int size = sizeof(int);
+
+	//GPU memory에 변수들을 할당하고 인자로 넘겨주야 한다.
+	// memory allocation in device
+	cudaMalloc((void**)&d_a, size);
+	cudaMalloc((void**)&d_b, size);
+	cudaMalloc((void**)&d_c, size);
+
+	// set input value
+	a = 2;
+	b = 8;
+	// copy input value to device memory
+	cudaMemcpy(d_a, &a, size, cudaMemcpyHostToDevice);
+	cudaMemcpy(d_b, &b, size, cudaMemcpyHostToDevice);
+
+	// launch sum function in GPU
+	sum << <1, 1 >> >(d_a, d_b, d_c);
+	// three angle brackets : host가 device를 호출한다고 마킹하는 것
+
+	// copy output value to cpu memory
+	cudaMemcpy(&c, d_c, size, cudaMemcpyDeviceToHost);
+	
+	// print result of sum
+	cout << c << endl;
+
+	// free GPU memory
+	cudaFree(d_a);
+	cudaFree(d_b);
+	cudaFree(d_c);
+      
+	return 0;
+}
+```
