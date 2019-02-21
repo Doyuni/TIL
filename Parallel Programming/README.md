@@ -14,7 +14,8 @@ Tool: Visual Studio 2015
 2. kernel.cu 파일 확인 후 예제 실행 -> 출력 확인
 3. 출력값이 확인되면 .cu 파일에 코드 작성
 
-* OpenCL
+
+### OpenCL
   Open Computing Language는 다양한 플랫폼을 통해 실행되는 프로그램을 위한 프레임워크로 CPU, GPU, DSP 그리고 FPGA를 구성한다.
   C99기반의 언어를 명시하며 플랫폼을 조절하고 compute devices에서 프로그램을 실행시키는 위의 devices와 APIs(Application Programming Interfaces)를 프로그래밍 하는데 사용된다. 
   task 기반과 data 기반의 병렬화를 사용하여 병렬 프로그래밍을 위한 표준 인터페이스를 제공한다.
@@ -23,6 +24,6 @@ Tool: Visual Studio 2015
   
     
 
-* OpenMP
+### OpenMP
 
-* OpenCV for_each
+### OpenCV for_each
