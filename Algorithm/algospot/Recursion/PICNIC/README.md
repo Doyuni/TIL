@@ -1,4 +1,5 @@
 # 소풍
+[PICNIC](https://algospot.com/judge/problem/read/PICNIC)
 * 완전 탐색 방법으로 재귀함수를 사용
 * 중복된 값 제거를 위해 특정 형태의 답만 센다.
 => 가장 빠른 번호의 순번 하나만 센다.  
