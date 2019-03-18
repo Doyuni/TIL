@@ -70,4 +70,30 @@ void doSomething(int student_scores[20]) {
 }
 doSomething(student_scores); // array 복사
 ```
+### Multi dimension
+* 2차원 배열 선언
+```c++
+const int rows = 3;
+const int columns = 5;
 
+int multi_array[rows][columns] =
+{
+        // 주소를 보면 사실 1차원으로 보임
+        {1, 2, 3, 4, 5},     //  1, 4, 8, 16, 20
+        {6, 7, 8, 9, 10},    // 24, 28, 32, 36, 40
+        {11, 12, 13, 14, 15} // ...
+};
+
+int array[][4] = {
+    {1, 2},
+    {1, 2, 3, 4},
+    {1, 2, 3}};
+    
+cout << sizeof(multi_array) << endl; // 60 ( 3 * 5 * 4 )
+```
+* 배열 선언시 rows는 비어있어도 되지만 columns은 꼭 넣어줘야 한다.
+#### 몇 행인지, 몇 열인지 구하기
+```c++
+int num_row = sizeof(array) / sizeof(array[0]);            // 60 / (5 * 4) = 3
+int num_column = sizeof(array[0]) / sizeof(array[0][0]);
+```
