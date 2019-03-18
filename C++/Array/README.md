@@ -32,7 +32,7 @@ _**주의**_
 ```c++
 int num;
 cin >> num;       // num은 런타임에 의해 결정된다.
-int scores[num]; // 컴파일 타임에 사이즈가 결정된다. */
+int scores[num]; // 컴파일 타임에 사이즈가 결정된다.
 ```
 * compile time에 사이즈가 결정되어야 하는데 위의 입력은 compile time 이후인 runtime 때 발생하기 때문에 error가 발생한다.
 (runtime: 프로그램이 실행되고 있을 때를 말한다.)  
@@ -49,7 +49,6 @@ PeopleName pe_arr[2];
 sizeof(rect_arr); // 80 = 8 * 10
 sizeof(pe_arr); // 8 = 4 * 2
 ```
-
 ### 배열이 인자로 들어가 있는 경우, 전달방식
 * 배열의 주소는 그 배열의 첫 번째 주소와 같다. 
 * 배열의 바로 다음 인덱스 주소는 이전 주소값 + 배열의 자료형 크기이다.
