@@ -2,11 +2,11 @@
 
 ## Plan  
 - **Programming Language**
-  - [x] [C++](C++/)  
-  - [ ] [Python](Python/)  
-  - [ ]  Javascript  
-  - [ ]  HTML/CSS  
-  - [ ]  PhostScript  
+  - [x] [C++](Programming%20Language/C++/)  
+  - [ ] [Python](Programming%20Language/Python/)  
+  - [ ]  Javascript(Programming%20Language/Javascript)
+  - [ ]  HTML/CSS(Programming%20Language/HTML&CSS/)
+  - [ ]  PhostScript(Programming%20Language/PhostScript)  
 _____
 - [ ]  Design Pattern  
 - [ ]  [OpenCV](OpenCV/)  
