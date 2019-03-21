@@ -6,8 +6,7 @@
   - [ ] [Python](Programming%20Language/Python/)  
   - [ ]  [Javascript](Programming%20Language/Javascript/)
   - [ ]  [HTML](Programming%20Language/HTML/)
-  - [ ]  [CSS](Programming%20Language/CSS/)
-  - [ ]  [PhostScript](Programming%20Language/PhostScript/)  
+  - [ ]  [CSS](Programming%20Language/CSS/)  
 _____
 - [ ]  Design Pattern  
 - [ ]  [OpenCV](OpenCV/)  
