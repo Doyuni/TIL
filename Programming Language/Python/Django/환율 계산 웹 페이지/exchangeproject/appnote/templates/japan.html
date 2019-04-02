@@ -1,0 +1,11 @@
+<h1>환율계산기</h1>
+<p>우리나라 원을 입력해주세요.</p>
+<form action="{% url 'result' %}">
+    <textarea cols="50" rows="2" name="fulltext1"></textarea>
+    <select name="money">
+        <option value="" selected>-- 선택 --</option>
+        <option value="dollar">달러</option>
+        <option value="yen">엔</option>
+    </select>
+    <input type="submit" value="변환">
+</form>
