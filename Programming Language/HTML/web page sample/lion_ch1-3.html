@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">  <!--이것은 html 언어는 한국어 입니다.-->
+<head>
+    <!--code.jquery.com에서 코드 가져오기-->
+        <script
+        src="http://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+        <!--bootstrap CDN -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>web</title>
+</head>
+<body>
+    <div class="container"> <!--bootstrap css  콘테이너(여백) -->
+        <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="basic.html">html 예제1</a></li>
+                <li role="presentation"><a href="basic2.html">html 예제2</a></li>
+              </ul>
+    <h1>로그인 화면입니다.</h1> <br>
+    <form action="전송받을 대상"> <!--bootstrap 폼-->
+        아이디 : <input type="text" name="id">
+        비밀번호 : <input type="password" name="pwd">
+        <button type="button" class="btn btn-primary">로그인</button> <!--bootstrap button-->
+            <div class="form-group">
+              <label for="exampleInputEmail1">이메일 주소</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">암호</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="암호">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">파일 업로드</label>
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">여기에 블록레벨 도움말 예제</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> 입력을 기억합니다
+              </label>
+            </div>
+            <button type="submit" class="btn btn-default">제출</button>
+          </form> <br>
+    </form>
+    <br>
+    <img src="Polygon.jpg" width=300>
+    <br>
+    <form action="전송받을 대상">
+        <h2>나의 포트폴리오</h2>
+        제목 : <input type="text" name="title"> <br>
+        <select>
+            <option value="article">기사</option>
+            <option value="diary">일기</option>
+            <option value="memo">메모</option>
+        </select> <br>
+        내용 : <br>
+        <textarea cols="30" rows="20"></textarea>
+        <br> <input type="submit">
+    </form>
+
+    <h2>해야 할 목록</h2>
+    <ol>
+        <li>운영체제 과제</li>
+        <li>AI 과제</li>
+        <li>파이썬 공부</li>
+    </ol>
+    
+    <!-- ul>li*5 단축키 이용 -->
+    <ul>
+        
+        <li></li>
+   
+    </ul>
+</div>
+</body>
+</html>
