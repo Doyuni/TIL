@@ -37,3 +37,41 @@ int main() {
     return 0;
 }
 ```
+**재귀함수**를 이용하여 문제 풀기
+* [암호 만들기](https://github.com/Doyuni/TIL/tree/master/Algorithm/baekjoon/Brute%20force/1759) 문제와 동일하다.
+```c++
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+vector<int> lotto; // 로또 번호를 넣을 배열
+void createLotto(vector<int> &num, int index, int count) { 
+    if(count == 6) {
+        for(auto e : lotto) {
+            cout << e << " ";
+        }
+        cout << '\n';
+        return;
+    }
+    if(index >= num.size()) return;
+    lotto.push_back(num[index]);
+    createLotto(num, index+1, count+1); // 수를 골랐을 때
+    lotto.pop_back(); 
+    createLotto(num, index+1, count); // 수를 고르지 않았을 때
+}
+int main() {
+    int k;
+    ios_base::sync_with_stdio(false);
+    while(true) {
+        cin >> k;
+        if(k == 0) break;
+        vector<int> num(k);
+        for(int i = 0; i < k; ++i) {
+            cin >> num[i];
+        }
+        createLotto(num, 0, 0);
+        cout << '\n';
+    }
+    return 0;
+}
+```
