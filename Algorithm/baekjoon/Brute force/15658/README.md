@@ -1,5 +1,8 @@
 ## 연산자 끼워넣기(2)
 [문제](https://www.acmicpc.net/problem/15658)
+- 연산자 끼워넣기1과 다르게 연산자의 개수가 n-1개 이상이다.  
+n-1개의 자리에 연산자 4개 모두가 쓰일 수 있는 경우가 최대이기에 4^(n-1)개의 경우가 나올 수 있다.  
+n은 최대 11개이기에 4^10 = 1048576(약 백만)으로 시간 제한을 만족한다.
 - **재귀함수**를 이용하여 경우의 수를 구한다.  
 void calculate(int index, int sum, int plus, int minus, int mul, int div)  
   - index: 수열의 인덱스
