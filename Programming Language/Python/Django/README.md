@@ -45,3 +45,26 @@ admin/ 대신 home/이라고 할 경우 home/을 붙여야 이동가능하다.
 3. 만든 html 파일이 어떻게 처리될지를 알려주는 함수를 정의한다.
 
 4. project의 url.py를 통해 만든 html파일을 url로 연결해준다.
+
+## MTV 패턴
+1. Model
+  - DB를 관리하는 역할 
+2. Template
+  - 화면에 보여지도록 해준다.
+3. View
+  - 화면이 언제 어떻게 처리될지를 관리한다.
+## MVC 패턴
+1. Model
+  - DB를 관리한다.
+2. View
+  - 화면에 보여지는 부분을 관리한다.
+3. Controller
+  - 중간 관리를 한다.(MTV 패턴의 View와 동일)
+### Scenario
+1. 사용자가 계정 정보(data)를 요청(request)
+
+2. 유효한 url을 통해 view로 들어와 request 분석 후 model에게 data유무 파악을 요청  
+
+3-1. model은 data가 있다면 view는 data를 template에 담아 화면에 보여지게 한다.  
+
+3-2. model은 data가 없다면 view는 data가 없다고 template에서 메시지를 보여지게 한다.  
