@@ -12,6 +12,9 @@ Using _DP+DFS_
         
         **OK**: dfs 탐색, d[a][b]에 탐색한 결과 저장(중복된 dfs 탐색을 막기 위해->시간 제한 만족)  
   3. 방문한 곳이면 탐색한 결과가 저장된 d[a][b] 리턴
+  
+__수정__
+- data가 추가되어 재채점 결과 실패라고 떠서 확인 결과 탐색 범위를 확인하는 구문에서 x <= m / y <= n 의 등호를 빼주어야 다. 애초에 0부터 index를 시작했기에 등호를 빼주는게 맞다.
 ## C++
 ```c++
 #include <iostream>
@@ -32,7 +35,7 @@ int dfs(int a, int b)
 			int x = a + move_x[i];
 			int y = b + move_y[i];
 			// map의 범위를 벗어나지 않을 때
-			if (x >= 0 && x <= m && y >= 0 && y <= n)
+			if (x >= 0 && x < m && y >= 0 && y < n)
 			{  // 갈 수 있는 map 높이보다 작아야 탐색 가능
 				if (map[a][b] < map[x][y])
 				{
@@ -46,7 +49,7 @@ int dfs(int a, int b)
 int main()
 {
 	cin >> m >> n;
-	for (int i= 0; i<m; i++)
+	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
