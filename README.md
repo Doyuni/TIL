@@ -1,5 +1,5 @@
 # Today I learned
-## [Blog](https://www.notion.so/doyuni/Doyun-Geum-56eb3e7764a84efc85cee3d53c3761c8)
+## [Blog](http://bit.ly/2XgGBwi)
 - 공부한 내용을 더 상세하게 다루는 공간
 ## Plan  
 - **Programming Language**
